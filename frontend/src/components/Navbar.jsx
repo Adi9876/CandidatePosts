@@ -4,7 +4,7 @@ import { WalletContext } from "../context/WalletProvider";
 import { useContext } from "react";
 
 const Navbar = () => {
-  const { walletAddress, connectWallet } = useContext(WalletContext);
+  const { walletAddress, connectWallet , disconnectWallet} = useContext(WalletContext);
 
   return (
     <nav className="p-4 bg-gray-800 text-white flex justify-between items-center">
@@ -12,8 +12,8 @@ const Navbar = () => {
         <Link to="/">Dashboard</Link>
         {isLoggedIn() && (
           <>
-            <Link to="/post-job">Post Job</Link>
-            <Link to="/profile">Profile</Link>
+            <Link to="/post-job">Job</Link>
+            <Link to="/profile">My Profile</Link>
           </>
         )}
       </div>

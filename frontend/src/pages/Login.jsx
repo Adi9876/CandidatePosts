@@ -10,7 +10,9 @@ const Login = () => {
     try {
       const res = await api.post("/auth/login", form);
       localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
+      // window.location.reload();
+      // navigate("/dashboard");
+      window.location.href = "/dashboard";
     } catch (err) {
       alert("Invalid login");
     }

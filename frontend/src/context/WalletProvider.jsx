@@ -12,6 +12,7 @@ export const WalletProvider = ({ children }) => {
           method: "eth_requestAccounts",
         });
         setWalletAddress(accounts[0]);
+        localStorage.setItem("walletAddress", accounts[0]);
       } catch (err) {
         console.error("User rejected wallet connection", err);
       }
@@ -19,6 +20,11 @@ export const WalletProvider = ({ children }) => {
       alert("MetaMask not detected");
     }
   };
+
+  const disconnectWallet = () => {
+    localStorage.removeItem("walletAddress");
+    setWalletAddress("");
+  }
 
   useEffect(() => {
     if (window.ethereum) {
@@ -29,7 +35,7 @@ export const WalletProvider = ({ children }) => {
   }, []);
 
   return (
-    <WalletContext.Provider value={{ walletAddress, connectWallet }}>
+    <WalletContext.Provider value={{ walletAddress, connectWallet, disconnectWallet }}>
       {children}
     </WalletContext.Provider>
   );
