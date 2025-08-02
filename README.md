@@ -1,0 +1,6 @@
+# Dashboard for job posts
+
+PORT=4000
+JWT_SECRET=...
+JWT_EXPIRES_IN=1h
+MONGO_URI=mongodb+srv://...
