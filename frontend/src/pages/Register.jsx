@@ -16,13 +16,18 @@ const Register = () => {
   }, [walletAddress]);
 
   const handleRegister = async () => {
+    if (!walletAddress || walletAddress.trim() === "") {
+      alert("Please connect wallet before registering !!");
+      return;
+    }
     try {
-      await api.post("/auth/register", { ...form });
+      await api.post("/auth/register", { ...form, walletAddress });
       navigate("/login");
     } catch (err) {
       alert("Registration failed");
     }
   };
+
 
   return (
     <div className="p-8 max-w-md mx-auto">

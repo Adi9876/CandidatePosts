@@ -17,6 +17,10 @@ export const registerUser = async (req, res) => {
     walletAddress,
   } = req.body;
 
+  if (!walletAddress || walletAddress.trim() === '') {
+    return res.status(400).json({ error: 'walletAddress is required' });
+  }
+
   try {
     const userExists = await User.findOne({ $or: [{ username }, { email }] });
     if (userExists) {
