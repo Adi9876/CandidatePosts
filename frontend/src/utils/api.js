@@ -6,8 +6,24 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+
+  const publicEndpoints = [
+    "/skills/extract",
+    "/auth/login",
+    "/auth/register",
+  ];
+
+  const isPublic = publicEndpoints.some((url) => config.url.includes(url));
+
+  if (token && !isPublic) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  console.log("📡 Sending request to", config.url, "with headers", config.headers);
+
+
   return config;
 });
+
 
 export default api;
