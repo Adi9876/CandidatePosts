@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import PostJob from "./pages/PostJob";
 import Navbar from "./components/Navbar";
 import { isLoggedIn } from "./auth";
+import Footer from "./components/Footer";
 
 const App = () => (
   <>
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/post-job" element={isLoggedIn() ? <PostJob /> : <Navigate to="/login" />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
+    <Footer/>
   </>
 );
 
