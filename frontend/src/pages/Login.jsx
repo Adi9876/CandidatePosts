@@ -12,7 +12,7 @@ const Login = () => {
       localStorage.setItem("token", res.data.token);
       // window.location.reload();
       // navigate("/dashboard");
-      window.location.href = "/dashboard";
+      window.location.href = "/api/dashboard";
     } catch (err) {
       alert("Invalid login");
     }
