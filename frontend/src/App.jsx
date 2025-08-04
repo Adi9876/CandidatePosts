@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import PostJob from "./pages/PostJob";
-import Navbar from "./components/NAvbar";
+import Navbar from "./components/Navbar";
 import { isLoggedIn } from "./auth";
 
 const App = () => (
