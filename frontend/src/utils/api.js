@@ -1,17 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:4000/api",
+  baseURL: `${import.meta.env.VITE_BACKEND_BASE_URL}/api`,
 });
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
-  const publicEndpoints = [
-    "/skills/extract",
-    "/auth/login",
-    "/auth/register",
-  ];
+  const publicEndpoints = ["/skills/extract", "/auth/login", "/auth/register"];
 
   const isPublic = publicEndpoints.some((url) => config.url.includes(url));
 
@@ -19,11 +15,14 @@ api.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
-  console.log("📡 Sending request to", config.url, "with headers", config.headers);
-
+  console.log(
+    "📡 Sending request to",
+    config.url,
+    "with headers",
+    config.headers
+  );
 
   return config;
 });
-
 
 export default api;

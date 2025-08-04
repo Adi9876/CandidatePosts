@@ -43,7 +43,6 @@ const Dashboard = () => {
     <div className="p-6 max-w-2xl mx-auto">
       <h2 className="text-xl mb-4 font-semibold">User Feed</h2>
 
-      {/* Toggle Form */}
       <div className="mb-4">
         <button
           onClick={() => setShowForm((prev) => !prev)}
@@ -53,7 +52,6 @@ const Dashboard = () => {
         </button>
       </div>
 
-      {/* Form */}
       {showForm && (
         <form onSubmit={handleSubmit} className="bg-white p-4 border rounded shadow mb-6">
           <textarea
@@ -79,7 +77,6 @@ const Dashboard = () => {
         </form>
       )}
 
-      {/* Feed */}
       {posts.map((post) => (
         <div key={post._id} className="p-4 mb-3 bg-gray-100 rounded">
           <p className="mb-1">{post.content}</p>
