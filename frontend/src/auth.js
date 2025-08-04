@@ -4,5 +4,5 @@ export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userInfo");
   localStorage.removeItem("walletAddress");
-  window.location.href = "/login";
+  window.location.href = "/";
 };
